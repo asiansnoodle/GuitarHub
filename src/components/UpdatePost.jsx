@@ -38,8 +38,10 @@ const UpdatePost = () => {
 
     const deletePost = async (e) => {
         e.preventDefault()
+        await supabase.from('comments').delete().eq('post_id', params.id)       
         const response = await supabase.from('posts').delete().eq('id', params.id)
         if(response){
+            console.log(response)
             alert('Post successfully deleted')
             navigate('/')
         }
