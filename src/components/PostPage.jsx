@@ -72,7 +72,6 @@ const PostPage = () => {
         if(comment.length != 0){
             const { data, error} = await supabase.from('comments').insert({post_id: post.id, comment: comment}).select()
             setComment("")
-            location.reload();
         }
         else{
             alert('Comment cannot be blank')
